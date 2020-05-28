@@ -1,0 +1,158 @@
+Lesson 1 - React UI
+
+App idea
+
+	-Find a solution to a problem that you have.
+	
+	-Sketch out idea on a piece of paper.
+	
+	-Think about what the UI will look like.
+	
+	-Keep scope narrow at first but will be 
+	 a good foundation to for building
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+React Components Structure
+
+	-Draw boxes around logically pieces that you can name.
+	
+	-There should be a natural hierachy forming that will
+	 form your component "tree".
+	 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+Create new React project
+
+	-Create React App is a great way to start.
+	 https://github.com/facebook/create-react-app
+	 
+	-I used Visual Studio Community 2019 
+		-ASP.NET Core Web Application
+		-React.js template
+		
+	-To follow along, clone my starter repo @
+	
+	
+	
+	
+	
+	
+	
+	
+
+	 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+
+
+
+
+
+
+
