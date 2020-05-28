@@ -1,0 +1,19 @@
+{
+  "name": "brodieweeklyplanner",
+  "version": "1.0.0",
+  "description": "http://www.findrobbrodie.com/brodieweeklyplanner",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FindRobBrodie/BrodieWeeklyPlanner.git"
+  },
+  "author": "Rob Brodie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FindRobBrodie/BrodieWeeklyPlanner/issues"
+  },
+  "homepage": "https://github.com/FindRobBrodie/BrodieWeeklyPlanner#readme"
+}
