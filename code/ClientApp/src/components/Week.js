@@ -1,30 +1,29 @@
 import React from 'react'
 import styled from 'styled-components'
+import { format, isEqual } from 'date-fns'
 import { Day } from './Day'
 
 const WeekStyled = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 2px;
-  background-color: #CCCCCC;
-  border: 2px solid #CCCCCC;
+  /*background-color: #CCCCCC;
+  border: 2px solid #CCCCCC;*/
 `
 
-const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
-
-export function Week({tasks, onTaskAdd, onTaskToggle, onTaskUpdate, onTaskDelete}) {
+export function Week({tasks, dates, onTaskAdd, onTaskToggle, onTaskUpdate, onTaskDelete}) {
   return (
     <WeekStyled>
-      {daysOfWeek.map(dayOfWeek => (
+      {dates.map(date => (        
         <Day 
-          key={dayOfWeek}
-          dayOfWeek={dayOfWeek}
-          tasks={tasks.filter(t=>t.dayOfWeek===dayOfWeek)} 
+          key={date}
+          date={date}
+          tasks={tasks.filter(t=>isEqual(t.date, date))} 
           onTaskAdd={onTaskAdd} 
           onTaskToggle={onTaskToggle} 
           onTaskUpdate={onTaskUpdate}
           onTaskDelete={onTaskDelete}
-        />
+        />        
       ))}      
     </WeekStyled>
   )

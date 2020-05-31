@@ -8,7 +8,7 @@ export function Planner() {
   return (
     <div>
       <Typography  variant='h4' gutterBottom>
-        Brodie Weekly planner
+        Brodie Weekly Planner
       </Typography>
 
       <Week />

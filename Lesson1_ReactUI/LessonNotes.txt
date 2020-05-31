@@ -1,6 +1,45 @@
+Brodie Weekly Planner Video Tutorial Series
+
+Author: Rob Brodie
+
+	-Multipart Series
+	
+	-Journey from concept to design to finished product.
+	
+	-Discuss the approach and rationale that goes into building
+	 modern web apps.
+
+
+
+
+
 Lesson 1 - React UI
 
-App idea
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+App Idea
 
 	-Find a solution to a problem that you have.
 	
@@ -54,7 +93,7 @@ React Components Structure
 	
 	
 	
-Create new React project
+Create New React Project
 
 	-Create React App is a great way to start.
 	 https://github.com/facebook/create-react-app
@@ -63,7 +102,14 @@ Create new React project
 		-ASP.NET Core Web Application
 		-React.js template
 		
-	-To follow along, clone my starter repo @
+	-To follow along, clone/download my repo @
+	https://github.com/FindRobBrodie/BrodieWeeklyPlanner	
+	
+	-Open open VSCode and open folder: /Lesson1_ReactUI/exercise
+	
+	-npm install
+	
+	-npm start
 	
 	
 	
@@ -71,6 +117,98 @@ Create new React project
 	
 	
 	
+	
+	
+	
+	
+	
+Think About State
+
+	-What type of data will app use?
+	
+	-What component should it "live" in?
+	
+	-Will state be shared? How will it be passed around?
+	
+	-React state should be immutable.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Build app
+
+	-Add new task.
+	-Display tasks.
+	-Complete task.
+	-Delete task.
+	-Update task.
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 	
 
 	 
