@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { format, isEqual } from 'date-fns'
+import { isEqual } from 'date-fns'
 import { Day } from './Day'
 
 const WeekStyled = styled.div`

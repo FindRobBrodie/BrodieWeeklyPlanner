@@ -9,31 +9,44 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import TodayIcon from '@material-ui/icons/Today';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
   },
   media: {
     height: 140,
   },
-});
+  task: {
+    '& > *': {
+      fontSize: '14px',
+      color: theme.palette.grey[600],      
+    },
+  },
+}));
 
 const DayStyled = styled.div`
   background-color: white;
   min-height: 200px;
   font-weight: 500;
   padding: .5rem;
+  &:hover { transform: scale(1.01);
 `
 
-const TaskInputStyled = styled.input`
-  ${props => `
-    text-decoration: ${props.complete ? 'line-through' : 'none'};
-  `}
+const CheckboxStyled = styled(Checkbox)`
+  margin-left: -8px;
+`
+
+const TaskTextFieldStyled = styled(TextField)`
+  & > * {   
+    ${props => `
+      text-decoration: ${props.complete ? 'line-through' : 'none'};
+    `}
+    font-size: 14px;
+  }  
 `
 
 const AddIconStyled = styled(Add)`
@@ -51,7 +64,7 @@ export function Day({date, tasks, onTaskAdd, onTaskToggle, onTaskUpdate, onTaskD
     fetch(`https://source.unsplash.com/collection/475977/480x480/?sig=${date.getDate()}`).then((response)=> {    
       setImgUrl(response.url)
     }) 
-  }, [])
+  }, [date])
 
   const handleTaskBlur = id => e => {
     const value = e.target.value
@@ -61,6 +74,33 @@ export function Day({date, tasks, onTaskAdd, onTaskToggle, onTaskUpdate, onTaskD
     }
     else {
       onTaskUpdate(value, id)
+    }
+  }
+
+  const handleTaskKeyPress = id => e => {
+    const value = e.target.value
+
+    if (e.key === 'Enter') {
+      if (!value) {
+        onTaskDelete(id)
+      }
+      else {
+        onTaskUpdate(value, id)
+      }
+      let focusable = document.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')
+      let found = false
+      for (const element of focusable) {
+        if (found) {
+          element.focus()
+          console.log(element)
+          break
+        }
+        if (e.target === element)
+          found = true;
+      }
+
+      e.preventDefault()
+      return false
     }
   }
 
@@ -76,6 +116,8 @@ export function Day({date, tasks, onTaskAdd, onTaskToggle, onTaskUpdate, onTaskD
       else {
         addNewTask(e.target.value)
       }
+      e.preventDefault()
+      return false
     }
   }
   
@@ -94,10 +136,10 @@ export function Day({date, tasks, onTaskAdd, onTaskToggle, onTaskUpdate, onTaskD
           <CardMedia
             className={classes.media}
             image={imgUrl}
-            title="Contemplative Reptile"
+            title={format(date, 'iiii')}
           />
           <CardContent>
-            <Typography  variant="h5" component="h2">
+            <Typography variant="h5" component="h2">
               {format(date, 'iiii')}
             </Typography>
             <Box color={'grey.500'} display={'flex'} alignItems={'center'} mb={1}>
@@ -110,7 +152,7 @@ export function Day({date, tasks, onTaskAdd, onTaskToggle, onTaskUpdate, onTaskD
               return (
                 <Grid container alignItems='center' key={task.id}>
                   <Grid item>
-                    <Checkbox 
+                    <CheckboxStyled 
                       color='primary' 
                       size="small"
                       value={task.complete}
@@ -118,16 +160,22 @@ export function Day({date, tasks, onTaskAdd, onTaskToggle, onTaskUpdate, onTaskD
                     />
                   </Grid>
                   <Grid item>
-                    <Input 
+                    <TaskTextFieldStyled
+                      className={classes.task}
+                      complete={task.complete}
+                      disabled={task.complete}
                       fullWidth 
-                      size="small"
                       autoComplete='false' 
-                      disableUnderline 
-                      defaultValue={task.name}
-                      inputComponent={TaskInputStyled}
+                      size="small"
+                      multiline                       
+                      defaultValue={task.name}                      
+                      InputProps={{
+                        disableUnderline: true,
+                        
+                      }}
                       inputProps={{
-                        complete: task.complete,
-                        onBlur: handleTaskBlur(task.id)
+                        onBlur: handleTaskBlur(task.id),
+                        onKeyPress: handleTaskKeyPress(task.id)
                       }}                
                     />
                   </Grid>
@@ -135,11 +183,12 @@ export function Day({date, tasks, onTaskAdd, onTaskToggle, onTaskUpdate, onTaskD
               )
             })}
             
-            <TextField
-              autoComplete='false' 
+            <TextField              
+              className={classes.task}
+              autoComplete='false'
+              size='small'
               fullWidth
               variant="outlined"
-              size="small"
               multiline
               InputProps={{
                 endAdornment: (
@@ -154,10 +203,7 @@ export function Day({date, tasks, onTaskAdd, onTaskToggle, onTaskUpdate, onTaskD
                 onBlur: handleNewTaskBlur,
                 onKeyPress: handleNewTaskKeyPress
               }}        
-            />
-            <Typography variant="body2" color="textSecondary" component="p">
-              use this font
-            </Typography>
+            />            
           </CardContent>          
         </Card>
       }
