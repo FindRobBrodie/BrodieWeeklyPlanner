@@ -37,7 +37,9 @@ const DayStyled = styled.div`
 `
 
 const CheckboxStyled = styled(Checkbox)`
-  margin-left: -8px;
+  margin-left: -16px;
+  margin-top: -8px;
+  margin-right: -16px;
 `
 
 const TaskTextFieldStyled = styled(TextField)`
@@ -53,7 +55,7 @@ const AddIconStyled = styled(Add)`
   cursor: pointer;
 `
 
-export function Day({date, tasks, onTaskAdd, onTaskToggle, onTaskUpdate, onTaskDelete}) {
+export function Day({date, tasks, autoFocus, onTaskAdd, onTaskToggle, onTaskUpdate, onTaskDelete}) {
   const [newTask, setNewTask] = useState('')
   const [imgUrl, setImgUrl] = useState()
   const classes = useStyles();
@@ -150,16 +152,16 @@ export function Day({date, tasks, onTaskAdd, onTaskToggle, onTaskUpdate, onTaskD
             
             {tasks.map(task => {
               return (
-                <Grid container alignItems='center' key={task.id}>
-                  <Grid item>
+                <Box display="flex" key={task.id}>
+                  <Box p={1}>
                     <CheckboxStyled 
                       color='primary' 
                       size="small"
                       value={task.complete}
                       onChange={e=>onTaskToggle(e.target.checked, task.id)} 
                     />
-                  </Grid>
-                  <Grid item>
+                  </Box>
+                  <Box p={1} flexGrow={1}>
                     <TaskTextFieldStyled
                       className={classes.task}
                       complete={task.complete}
@@ -167,7 +169,7 @@ export function Day({date, tasks, onTaskAdd, onTaskToggle, onTaskUpdate, onTaskD
                       fullWidth 
                       autoComplete='false' 
                       size="small"
-                      multiline                       
+                      multiline  
                       defaultValue={task.name}                      
                       InputProps={{
                         disableUnderline: true,
@@ -178,14 +180,15 @@ export function Day({date, tasks, onTaskAdd, onTaskToggle, onTaskUpdate, onTaskD
                         onKeyPress: handleTaskKeyPress(task.id)
                       }}                
                     />
-                  </Grid>
-                </Grid>
+                  </Box>
+                </Box>
               )
             })}
             
             <TextField              
               className={classes.task}
               autoComplete='false'
+              autoFocus={autoFocus}
               size='small'
               fullWidth
               variant="outlined"
