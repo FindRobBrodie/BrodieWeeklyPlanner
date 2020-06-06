@@ -40,6 +40,7 @@ const CheckboxStyled = styled(Checkbox)`
   margin-left: -16px;
   margin-top: -8px;
   margin-right: -16px;
+  margin-bottom: -8px;
 `
 
 const TaskTextFieldStyled = styled(TextField)`
