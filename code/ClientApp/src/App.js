@@ -1,8 +1,10 @@
 import React from 'react'
 import { Route } from 'react-router'
-import { Planner } from './components/Planner'
 import styled from 'styled-components'
 import Paper from '@material-ui/core/Paper'
+
+import { Planner } from './components/Planner'
+import { AppLayout } from '@findrobbrodie/find-rob-brodie-common'
 
 const AppStyled = styled.div`
   padding: .5rem;
@@ -14,10 +16,12 @@ const PaperStyled = styled(Paper)`
 
 export default function App() {
   return (
-    <AppStyled>
-      <PaperStyled>
-        <Route exact path='/' component={Planner} />
-      </PaperStyled>
-    </AppStyled>
+    <AppLayout>
+      <AppStyled>
+        <PaperStyled>
+          <Route exact path='/' component={Planner} />
+        </PaperStyled>
+      </AppStyled>
+    </AppLayout>
   )
 }
