@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   task: {
     '& > *': {
       fontSize: '14px',
-      color: theme.palette.grey[600],      
+      color: theme.palette.grey[600], 
     },
   },
 }));
